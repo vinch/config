@@ -99,7 +99,7 @@ function parse_git_branch {
 }
 
 function prompt_func {
-    PS1="${LIGHT_GRAY}❨${LIGHT_BLUE}\w${GREEN}$(parse_git_branch)${LIGHT_GRAY}❩${COLOR_NONE}${YELLOW}${prompt_end}${COLOR_NONE}"
+  PS1="${LIGHT_GRAY}❨${LIGHT_BLUE}\w${GREEN}$(parse_git_branch)${LIGHT_GRAY}❩${COLOR_NONE}${YELLOW}${prompt_end}${COLOR_NONE}"
 }
 
 PROMPT_COMMAND=prompt_func
