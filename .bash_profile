@@ -3,14 +3,14 @@ LS_COLORS="no=00:fi=00:di=01;32:ln=01;33:pi=40;32:so=01;32:do=01;32:bd=40;33;01:
 export LS_COLORS;
 
 if [[ $- != *i* ]] ; then
-	# Shell is non-interactive.  Be done now!
-	return
+  # Shell is non-interactive. Be done now!
+  return
 fi
 
 # Colors
 if [ -f ~/.dir_colors ]; then
   export LS_OPTIONS='--color=auto'
-	eval `gdircolors ~/.dir_colors`
+  eval `gdircolors ~/.dir_colors`
 fi
 
 if [ -f /opt/local/etc/bash_completion ]; then
@@ -37,7 +37,7 @@ LIGHT_GREEN="\[\033[1;32m\]"
 WHITE="\[\033[1;37m\]"
 LIGHT_GRAY="\[\033[0;39m\]"
 COLOR_NONE="\[\e[0m\]"
- 
+
 prompt_end="★ "
 
 function parse_git_dirty {
@@ -60,16 +60,16 @@ function parse_git_branch {
 }
 
 function get_git_branch {
-	git branch | awk '/^\*/ { print $2 }'
+  git branch | awk '/^\*/ { print $2 }'
 }
 
 function get_git_dirty {
-	git diff --quiet || echo '*'
+  git diff --quiet || echo '*'
 }
 
 function get_git_prompt {
-	git branch &> /dev/null || return 1
-	echo "[$(get_git_branch)$(get_git_dirty)] "
+  git branch &> /dev/null || return 1
+  echo "[$(get_git_branch)$(get_git_dirty)] "
 }
 
 function parse_git_branch {
@@ -94,7 +94,7 @@ function parse_git_branch {
     if [[ ! ${git_status}} =~ "working directory clean" ]]; then
       echo "${RED}:${branch}${remote}"
     else
-       echo "${GREEN}:${branch}${remote}"
+      echo "${GREEN}:${branch}${remote}"
     fi
   fi
 }
@@ -103,4 +103,5 @@ function prompt_func {
   PS1="${LIGHT_GRAY}❨${LIGHT_BLUE}\w${GREEN}$(parse_git_branch)${LIGHT_GRAY}❩${COLOR_NONE}${YELLOW}${prompt_end}${COLOR_NONE}"
 }
 
+. ~/.nvm/nvm.sh
 PROMPT_COMMAND=prompt_func
